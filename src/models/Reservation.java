@@ -5,7 +5,13 @@ import java.util.Collection;
 import java.util.Date;
 
 public class Reservation {
-    private int counter = 1000;
+    private static int counter = 1000;
+
+    private int id;
+    private Date date;
+    private String name;
+
+    private boolean reservationStatus;
 
     public int getId() {
         return id;
@@ -23,9 +29,13 @@ public class Reservation {
         return table;
     }
 
-    private int id;
-    private Date date;
-    private String name;
+    public boolean isReservationStatus() {
+        return reservationStatus;
+    }
+
+    public void setReservationStatus(boolean reservationStatus) {
+        this.reservationStatus = reservationStatus;
+    }
 
     public Collection<Reservation> getReservations() {
         return reservations;
@@ -40,9 +50,10 @@ public class Reservation {
 
 
     public Reservation(Date date, String name, Table table) {
-        id = counter++;
+        id = ++counter;
         this.date = date;
         this.name = name;
         this.table = table;
+        this.reservationStatus = true;
     }
 }

@@ -34,4 +34,19 @@ public class TablesRepository implements Model {
         }
         throw new RuntimeException("Некорректный номер столика");
     }
+    @Override
+    public int changeReservationTable(int oldTableNo, Date date, int newTableNo, String name) {
+        for (Table table: tables) {
+            if (table.getNo() == oldTableNo) {
+                for (Reservation reservation: table.getReservations()){
+                    if (reservation.isReservationStatus()){
+                        reservation.setReservationStatus(false);
+                        return this.reservationTable(date, newTableNo, name);
+
+                    }
+                }
+            }
+        }
+        throw new RuntimeException(" Что-то полшло не так!");
+    }
 }

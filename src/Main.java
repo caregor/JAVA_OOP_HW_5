@@ -13,5 +13,9 @@ public class Main {
         BookingPresenter bookingPresenter = new BookingPresenter(tablesRepository, bookingView);
         bookingPresenter.updateTablesView();
         bookingView.reservatioTable(new Date(), 2, "Ivan");
+        bookingPresenter.updateTablesView();
+        bookingView.reservatioTable(new Date(), 2, "Sergey");
+        bookingPresenter.updateTablesView();
+        bookingView.changeReservationTable(2, new Date(), 4, "Станислав");
     }
 }
